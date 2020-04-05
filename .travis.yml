@@ -11,10 +11,10 @@ script:
   - docker run -e CI=true basov/docker-complex-frontend npm run test:unit
 
 after_success: 
-  - docker build basov/docker-complex-frontend ./frontend
-  - docker build basov/docker-complex-nginx ./nginx
-  - docker build basov/docker-complex-api ./api
-  - docker build basov/docker-complex-worker ./worker 
+  - docker build -t basov/docker-complex-frontend ./frontend
+  - docker build -t basov/docker-complex-nginx ./nginx
+  - docker build -t basov/docker-complex-api ./api
+  - docker build -t basov/docker-complex-worker ./worker 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push basov/docker-complex-frontend
   - docker push basov/docker-complex-nginx

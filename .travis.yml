@@ -12,11 +12,11 @@ script:
 
 after_success: 
   - docker build -t basov/docker-complex-frontend ./frontend
-  - docker build -t basov/docker-complex-nginx ./nginx
+  - docker build -t basov/docker-complex-ngnix ./ngnix
   - docker build -t basov/docker-complex-api ./api
   - docker build -t basov/docker-complex-worker ./worker 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push basov/docker-complex-frontend
-  - docker push basov/docker-complex-nginx
+  - docker push basov/docker-complex-ngnix
   - docker push basov/docker-complex-api
   - docker push basov/docker-complex-worker

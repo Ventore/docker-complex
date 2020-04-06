@@ -1,0 +1,31 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "frontend",
+      "image": "basov/docker-complex-frontend",
+      "host": "frontend",
+      "essential": false
+    },
+    {
+      "name": "api",
+      "image": "basov/docker-complex-api",
+      "host": "api",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "basov/docker-complex-worker",
+      "host": "worker",
+      "essential": false
+    },
+    {
+      "name": "ngnix",
+      "image": "basov/docker-complex-ngnix",
+      "host": "ngnix",
+      "essential": true,
+      "portMappings": [{ "hostPort": 80, "containerPort": 80 }],
+      "links": ["frontend", "api"]
+    }
+  ]
+}

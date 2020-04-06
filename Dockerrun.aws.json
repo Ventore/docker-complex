@@ -5,19 +5,22 @@
       "name": "frontend",
       "image": "basov/docker-complex-frontend",
       "host": "frontend",
-      "essential": false
+      "essential": false,
+      "memory":  128
     },
     {
       "name": "api",
       "image": "basov/docker-complex-api",
       "host": "api",
-      "essential": false
+      "essential": false,
+      "memory":  128
     },
     {
       "name": "worker",
       "image": "basov/docker-complex-worker",
       "host": "worker",
-      "essential": false
+      "essential": false,
+      "memory":  128
     },
     {
       "name": "ngnix",
@@ -25,7 +28,8 @@
       "host": "ngnix",
       "essential": true,
       "portMappings": [{ "hostPort": 80, "containerPort": 80 }],
-      "links": ["frontend", "api"]
+      "links": ["frontend", "api"],
+      "memory":  128
     }
   ]
 }
